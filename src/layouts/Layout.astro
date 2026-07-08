@@ -11,13 +11,12 @@ const pageTitle = "Datsenglish-Learn the language of tech";
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-	<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Bricolage+Grotesque:wght@400;500;600&display=swap" rel="stylesheet" />
+	  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+	  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Bricolage+Grotesque:wght@400;500;600&display=swap" rel="stylesheet" />
     <title>{pageTitle}</title>
   </head>
   <body>
-    <Header />
-    <Footer />
+    <slot />
     <script>
       import "../scripts/index.js";
     </script>

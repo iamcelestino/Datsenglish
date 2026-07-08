@@ -1,15 +1,418 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Footer from '../components/Footer.astro';
-import Nav  from '../components/Nav.astro'
+import Nav  from '../components/Nav.astro';
+import '../styles/global.css';
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
 <Layout>
-	<Nav>
-	</Nav>
-	<Footer>	
-	</Footer>
+    <Nav />
+      <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg-text">DEPLOY</div>
+    <div class="hero-content">
+      <div class="hero-badge reveal">
+        <span class="badge-dot"></span>English Coach for Tech Students
+      </div>
+      <h1 class="hero-h1 reveal reveal-delay-1">
+        Stop <em>translating.</em><br>Start <em>building.</em>
+      </h1>
+      <p class="hero-sub reveal reveal-delay-2">
+        Tech runs on English — docs, tutorials, job interviews, Stack Overflow. I help Portuguese-speaking students read, write, and speak it without the language wall slowing down their code.
+      </p>
+      <div class="hero-btns reveal reveal-delay-3">
+        <a href="#booking" class="btn-primary btn-lg">Book your free call</a>
+        <a href="#reacts" class="btn-ghost btn-lg">Watch Coach Reacts ↓</a>
+      </div>
+      <div class="hero-stats reveal reveal-delay-4">
+        <div class="stat">
+          <span class="stat-num" data-target="200">0</span><span class="stat-num">+</span>
+          <span class="stat-label">Tech students coached</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <span class="stat-num">4.9</span>
+          <span class="stat-label">Average rating</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <span class="stat-num" data-target="3">0</span>
+          <span class="stat-label">Coaching levels</span>
+        </div>
+      </div>
+    </div>
+    <div class="hero-visual reveal reveal-delay-2">
+      <div class="speech-bubble sb1">
+        <span class="sb-tag">Quick Tip</span>
+        <p>Read docs in English. Stop translating in your head.</p>
+      </div>
+      <div class="coach-card">
+        <div class="coach-avatar-big">DE</div>
+        <div class="coach-card-info">
+          <strong>datsenglish coach</strong>
+          <span>Technical English Specialist</span>
+        </div>
+        <div class="live-badge">● Live</div>
+      </div>
+      <div class="speech-bubble sb2">
+        <span class="sb-tag">Student Win</span>
+        <p>"Passed my dev interview in English!" 🔥</p>
+      </div>
+      <div class="floating-pill pill1">Docs unlocked ✓</div>
+      <div class="floating-pill pill2">Interview-ready</div>
+    </div>
+  </section>
+
+  <!-- TRUST BAR -->
+  <div class="trust-bar">
+    <span>Trusted by tech students from</span>
+    <strong>Angola</strong>
+    <strong>Brazil</strong>
+    <strong>Nigeria</strong>
+    <strong>Portugal</strong>
+    <strong>Mozambique</strong>
+    <strong>Cape Verde</strong>
+    <span>& more</span>
+  </div>
+
+  <!-- ABOUT -->
+  <section class="about section" id="about">
+    <div class="container about-grid">
+      <div class="about-visual">
+        <div class="about-card">
+          <div class="about-avatar">DE</div>
+          <div class="about-tags">
+            <span class="tag tag-orange">Technical English specialist</span>
+            <span class="tag tag-teal">Ex-CS / Eng student</span>
+            <span class="tag tag-purple">Docs & interview prep</span>
+            <span class="tag tag-orange">5 yrs experience</span>
+          </div>
+          <div class="about-stat-row">
+            <div class="mini-stat"><strong>200+</strong><span>Students</span></div>
+            <div class="mini-stat"><strong>3</strong><span>Levels</span></div>
+            <div class="mini-stat"><strong>4.9★</strong><span>Rating</span></div>
+          </div>
+        </div>
+        <div class="about-accent-box">
+          "Every tech student I've coached had one thing in common — they understood the code, they just couldn't read the docs."
+        </div>
+      </div>
+      <div class="about-text">
+        <div class="section-tag">Your coach</div>
+        <h2 class="section-title">Hey, I'm the<br>datsenglish coach</h2>
+        <p>I studied Computer Engineering myself — so I know exactly where the English wall shows up: reading documentation, following tutorials, surviving a technical interview. I've helped 200+ tech students get past it.</p>
+        <p>I post weekly tech-English breakdowns, term translations, and my signature <strong>Coach Reacts</strong> series on Instagram and TikTok to help learners like you every single day — for free.</p>
+        <p>Whether you're prepping for a dev job interview, trying to read English docs without translating, or want to actually understand tutorials without subtitles — I've got you.</p>
+        <a href="#booking" class="btn-primary" style="margin-top:1.5rem;display:inline-block;">Let's work together</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="services section" id="services">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">Services</div>
+        <h2 class="section-title">Pick your coaching level</h2>
+        <p class="section-sub">No generic lessons. Every session is built around real tech material — docs, tutorials, job listings, interview questions.</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card card-teal">
+          <div class="service-level">Beginner</div>
+          <h3 class="service-name">Docs Without Fear</h3>
+          <p class="service-desc">Build the foundation to read English documentation and tutorials without translating every line in your head.</p>
+          <ul class="service-list">
+            <li>Technical vocabulary basics</li>
+            <li>Reading docs & tutorials with confidence</li>
+            <li>Pronunciation of common dev terms</li>
+            <li>Personalised tech-vocabulary plan</li>
+          </ul>
+          <div class="service-footer">
+            <span class="service-price">From <strong>$49</strong> / session</span>
+            <a href="#booking" class="btn-outline-small">Get started</a>
+          </div>
+        </div>
+        <div class="service-card card-orange featured">
+          <div class="featured-badge">Most popular</div>
+          <div class="service-level">Intermediate</div>
+          <h3 class="service-name">Dev Communication Flow</h3>
+          <p class="service-desc">Speak and write naturally in English — standups, PRs, Slack threads, and following English-language tutorials in real time.</p>
+          <ul class="service-list">
+            <li>Technical conversation fluency</li>
+            <li>Writing clear PR & commit messages</li>
+            <li>Following tutorials & talks live</li>
+            <li>Real standup & code review simulations</li>
+          </ul>
+          <div class="service-footer">
+            <span class="service-price">From <strong>$69</strong> / session</span>
+            <a href="#booking" class="btn-white-small">Get started</a>
+          </div>
+        </div>
+        <div class="service-card card-purple">
+          <div class="service-level">Advanced</div>
+          <h3 class="service-name">Interview & Career Ready</h3>
+          <p class="service-desc">Master fluency for high-stakes moments — technical interviews, English-speaking teams, and global remote job applications.</p>
+          <ul class="service-list">
+            <li>Technical interview prep</li>
+            <li>Professional & engineering vocabulary</li>
+            <li>Whiteboard & live-coding communication</li>
+            <li>Confidence for international remote teams</li>
+          </ul>
+          <div class="service-footer">
+            <span class="service-price">From <strong>$89</strong> / session</span>
+            <a href="#booking" class="btn-outline-small">Get started</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="how section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">Process</div>
+        <h2 class="section-title">3 steps to coding in English</h2>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">01</div>
+          <div class="step-content">
+            <h3>Book a free discovery call</h3>
+            <p>We chat for 20 minutes about your current level, what you're studying or building, and exactly where the language wall is hitting you.</p>
+          </div>
+        </div>
+        <div class="step-connector"></div>
+        <div class="step">
+          <div class="step-num">02</div>
+          <div class="step-content">
+            <h3>Get your custom tech-English plan</h3>
+            <p>I build a coaching roadmap around your real material — your course docs, your tutorials, your job target. No generic lessons.</p>
+          </div>
+        </div>
+        <div class="step-connector"></div>
+        <div class="step">
+          <div class="step-num">03</div>
+          <div class="step-content">
+            <h3>Practice, build, level up</h3>
+            <p>Weekly 1-on-1 sessions with real-time feedback, working through actual docs, tutorials, and interview questions in English.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COACH REACTS -->
+  <section class="reacts section" id="reacts">
+    <div class="container">
+      <div class="reacts-grid">
+        <div class="reacts-text">
+          <div class="section-tag">Signature series</div>
+          <h2 class="section-title">Coach Reacts</h2>
+          <p>Every Saturday I react to real tech English in the wild — docs, conference talks, dev YouTubers — breaking down the vocabulary, terms, and natural patterns you'll actually need.</p>
+          <p>It's the fastest way to stop translating tech content in your head. And it's completely free.</p>
+          <div class="reacts-breakdown">
+            <div class="breakdown-item">
+              <span class="breakdown-icon">🎙️</span>
+              <span>Dev term breakdowns</span>
+            </div>
+            <div class="breakdown-item">
+              <span class="breakdown-icon">🎯</span>
+              <span>Docs & tutorial walkthroughs</span>
+            </div>
+            <div class="breakdown-item">
+              <span class="breakdown-icon">💬</span>
+              <span>Standup & interview phrasing</span>
+            </div>
+            <div class="breakdown-item">
+              <span class="breakdown-icon">🔥</span>
+              <span>"Termo da semana" tech vocab</span>
+            </div>
+          </div>
+          <div class="reacts-ctas">
+            <a href="#" class="btn-primary">Follow on Instagram</a>
+            <a href="#" class="btn-ghost">Watch on TikTok</a>
+          </div>
+        </div>
+        <div class="reacts-visual">
+          <div class="video-mock">
+            <div class="video-top">
+              <span class="video-user">@datsenglish</span>
+              <span class="video-label">Coach Reacts #12</span>
+            </div>
+            <div class="video-screen">
+              <div class="split-left">
+                <div class="speaker-box">English docs</div>
+              </div>
+              <div class="split-right">
+                <div class="coach-box">Coach breakdown</div>
+              </div>
+            </div>
+            <div class="video-annotations">
+              <div class="annotation a1">"deploy" ← what it really means</div>
+              <div class="annotation a2">Reading without translating = speed</div>
+            </div>
+            <div class="video-stats">
+              <span>❤️ 4.2k</span>
+              <span>💬 318</span>
+              <span>↗ 901 shares</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials section" id="testimonials">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">Student wins</div>
+        <h2 class="section-title">Real results, real devs</h2>
+        <p class="section-sub">These aren't overnight miracles. These are tech students who showed up, did the work, and stopped letting English slow them down.</p>
+      </div>
+      <div class="testi-grid">
+        <div class="testi-card">
+          <div class="stars">★★★★★</div>
+          <p class="testi-quote">"After 2 months with datsenglish I aced my technical interview in English. I went from freezing on whiteboard questions to explaining my code with confidence. Life-changing."</p>
+          <div class="testi-author">
+            <div class="testi-avatar" style="background:#FFF3EE;color:#BF4A00;">AM</div>
+            <div>
+              <strong>Amara M.</strong>
+              <span>Computer Science student, Nigeria</span>
+            </div>
+          </div>
+        </div>
+        <div class="testi-card testi-featured">
+          <div class="stars">★★★★★</div>
+          <p class="testi-quote">"The Coach Reacts series is free gold. I understood more tech vocabulary in one week of watching than in months of trying to read docs alone."</p>
+          <div class="testi-author">
+            <div class="testi-avatar" style="background:#E0F7F6;color:#1A6B67;">JR</div>
+            <div>
+              <strong>João R.</strong>
+              <span>Frontend developer, Brazil</span>
+            </div>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="stars">★★★★★</div>
+          <p class="testi-quote">"Finally a coach who gets that I'm here for the code, not small talk. My ability to follow English tutorials improved so fast my classmates started asking how."</p>
+          <div class="testi-author">
+            <div class="testi-avatar" style="background:#EDE7F6;color:#4527A0;">SC</div>
+            <div>
+              <strong>Sofia C.</strong>
+              <span>Computer Engineering student, Angola</span>
+            </div>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="stars">★★★★★</div>
+          <p class="testi-quote">"I was terrified to speak English in standups. After 6 sessions I was leading code reviews in English. My team lead was shocked. So was I honestly!"</p>
+          <div class="testi-author">
+            <div class="testi-avatar" style="background:#FFFDE7;color:#7A5C00;">KO</div>
+            <div>
+              <strong>Kwame O.</strong>
+              <span>Software engineer, Ghana</span>
+            </div>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="stars">★★★★★</div>
+          <p class="testi-quote">"The weekly tech-term challenges on Instagram are addictive. I do them every week now and I barely have to translate documentation anymore."</p>
+          <div class="testi-author">
+            <div class="testi-avatar" style="background:#E8F5E9;color:#1B5E20;">LP</div>
+            <div>
+              <strong>Luisa P.</strong>
+              <span>IT student, Portugal</span>
+            </div>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="stars">★★★★★</div>
+          <p class="testi-quote">"Best investment I've made for my career. The plan was built around my actual coursework and job applications — not generic English classes."</p>
+          <div class="testi-author">
+            <div class="testi-avatar" style="background:#FCE4EC;color:#880E4F;">MF</div>
+            <div>
+              <strong>Marco F.</strong>
+              <span>Business & IT student, Mozambique</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LEAD MAGNET -->
+  <section class="lead-magnet section">
+    <div class="container">
+      <div class="magnet-inner">
+        <div class="magnet-badge">Free resource</div>
+        <h2>Get the 7-day<br>tech English challenge</h2>
+        <p>7 daily exercises to help you read docs, follow tutorials, and talk about your code in English — no translating required. Join 1,000+ tech students already using it, completely free.</p>
+        <form class="email-form" id="emailForm">
+          <input type="email" placeholder="Your email address" required class="email-input" />
+          <button type="submit" class="btn-primary">Send it to me</button>
+        </form>
+        <span class="magnet-note">No spam. Unsubscribe anytime.</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- BOOKING -->
+  <section class="booking section" id="booking">
+    <div class="container">
+      <div class="booking-grid">
+        <div class="booking-text">
+          <div class="section-tag">Book a session</div>
+          <h2 class="section-title">Ready to level up?</h2>
+          <p>Start with a free 20-minute discovery call. No pressure, no commitment — just an honest conversation about where you are with English and where your coursework or career needs you to be.</p>
+          <div class="booking-perks">
+            <div class="perk">✓ Free 20-min discovery call</div>
+            <div class="perk">✓ Custom tech-English plan included</div>
+            <div class="perk">✓ Flexible scheduling</div>
+            <div class="perk">✓ Money-back guarantee</div>
+          </div>
+        </div>
+        <div class="booking-form-card" id="contact">
+          <form id="bookingForm">
+            <h3>Book your free call</h3>
+            <div class="form-group">
+              <label>Your name</label>
+              <input type="text" placeholder="e.g. Sofia Cardoso" required />
+            </div>
+            <div class="form-group">
+              <label>Email address</label>
+              <input type="email" placeholder="your@email.com" required />
+            </div>
+            <div class="form-group">
+              <label>Current English level</label>
+              <select>
+                <option value="">Select your level</option>
+                <option>Beginner — I know very little</option>
+                <option>Elementary — I know basics</option>
+                <option>Intermediate — I can communicate</option>
+                <option>Upper-intermediate — I want more fluency</option>
+                <option>Advanced — I want to polish & refine</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>What's your biggest challenge with technical English?</label>
+              <textarea placeholder="e.g. I can't read documentation without translating, I freeze in technical interviews..." rows="3"></textarea>
+            </div>
+            <button type="submit" class="btn-primary btn-full">Book my free call →</button>
+            <p class="form-note">You'll receive a calendar link within 24 hours.</p>
+          </form>
+          <div class="form-success" id="formSuccess">
+            <div class="success-icon">✓</div>
+            <h3>You're booked!</h3>
+            <p>Check your email — your calendar link is on its way. See you soon! 🚀</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+    <Footer />
 </Layout>
