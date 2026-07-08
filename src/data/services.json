@@ -1,0 +1,64 @@
+[
+  {
+    "id": "docs-without-career-fear",
+    "tier": "beginner",
+    "tierLabel": "Beginner",
+    "title": "Docs Without Career Fear",
+    "description": "Build the foundation to read English documentation and tutorials without translating every line in your head.",
+    "features": [
+      "Technical vocabulary basics",
+      "Writing clear PR & commit messages",
+      "Reading docs & tutorials with confidence",
+      "Real standup & code review simulations",
+      "Pronunciation of common dev terms",
+      "Personalised tech-vocabulary plan"
+    ],
+    "price": {
+      "amount": 7000,
+      "currency": "AOA",
+      "unit": "month"
+    },
+    "cta": "Get started",
+    "popular": false
+  },
+  {
+    "id": "dev-communication-flow",
+    "tier": "intermediate",
+    "tierLabel": "Intermediate",
+    "title": "Dev Communication Flow",
+    "description": "Speak and write naturally in English — for high-stakes standups, PRs, Slack threads, and following English-language tutorials live.",
+    "features": [
+      "Technical conversation fluency",
+      "Following tutorials & talks live",
+      "Whiteboard & live-coding communication",
+      "Confidence for international remote teams"
+    ],
+    "price": {
+      "amount": 7000,
+      "currency": "AOA",
+      "unit": "month"
+    },
+    "cta": "Get started",
+    "popular": true
+  },
+  {
+    "id": "interview-career-ready",
+    "tier": "advanced",
+    "tierLabel": "Advanced",
+    "title": "Interview & Career Ready",
+    "description": "Master fluency for high-stakes interviews, English-speaking teams, and global remote job opportunities.",
+    "features": [
+      "Technical interview prep",
+      "Professional & engineering vocabulary",
+      "Whiteboard & live-coding communication",
+      "Confidence for international remote teams"
+    ],
+    "price": {
+      "amount": 7000,
+      "currency": "AOA",
+      "unit": "month"
+    },
+    "cta": "Get started",
+    "popular": false
+  }
+]

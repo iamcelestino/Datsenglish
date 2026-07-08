@@ -1,0 +1,24 @@
+import { defineCollection } from 'astro:content';
+import { file } from 'astro/loaders';
+import { z } from 'astro/zod';
+
+const services = defineCollection({
+	loader: file("src/data/services.json"),
+	schema: z.object({
+		id: z.string(),
+	    tier: z.enum(['beginner', 'intermediate', 'advanced']),
+	    tierLabel: z.string(),
+	    title: z.string(),
+	    description: z.string(),
+	    features: z.array(z.string()),
+	    price: z.object({
+			amount: z.number(),
+			currency: z.string(),
+			unit: z.string(),
+	    }),
+	    cta: z.string(),
+	    popular: z.boolean(),
+	}),
+})
+
+export const collections  = { services };
