@@ -21,4 +21,13 @@ const services = defineCollection({
 	}),
 })
 
-export const collections  = { services };
+const steps = defineCollection({
+	loader: file("src/data/services.json"),
+	schema: z.object({
+		id: z.string(),
+		title: z.string(),
+		description: z.string(),
+	}),
+})
+
+export const collections  = { services, steps };
