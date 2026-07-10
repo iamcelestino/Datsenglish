@@ -2,16 +2,16 @@
   {
     "id": "01",
     "title": "Book a free discovery call",
-    "description": "We chat for 20 minutes about your current level, what you're studying or building, and exactly where the language wall is hitting you.",
+    "description": "We chat for 20 minutes about your current level, what you're studying or building, and exactly where the language wall is hitting you."
   },
   {
     "id": "02",
     "title": "Get your custom tech-English plan",
-    "description": "I build a coaching roadmap around your real material — your course docs, your tutorials, your job target. No generic lessons.",
+    "description": "I build a coaching roadmap around your real material — your course docs, your tutorials, your job target. No generic lessons."
   },
   {
     "id": "03",
     "title": "Practice, build, level up",
-    "description": "Weekly 1-on-1 sessions with real-time feedback, working through actual docs, tutorials, and interview questions in English.",
-  },
+    "description": "Weekly 1-on-1 sessions with real-time feedback, working through actual docs, tutorials, and interview questions in English."
+  }
 ]

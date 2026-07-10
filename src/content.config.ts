@@ -22,7 +22,7 @@ const services = defineCollection({
 })
 
 const steps = defineCollection({
-	loader: file("src/data/services.json"),
+	loader: file("src/data/steps.json"),
 	schema: z.object({
 		id: z.string(),
 		title: z.string(),
