@@ -3,7 +3,8 @@ import {getCollection, render} from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 import Nav from '../../components/Nav.astro';
 import Footer from '../../components/Footer.astro';
-
+import '../../styles/blogIndex.css';
+import '../../styles/single-post.css';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
@@ -20,7 +21,120 @@ const { Content } = await render(post);
 
 <Layout>
 	<Nav />
-		  <h1>{post.data.title}</h1>
-		  <Content />
+      <section class="post-header">
+  <div class="prose-wrap">
+    <div class="breadcrumb"><a href="blog-index.html">← Back to blog</a> &nbsp;·&nbsp; MINDSET</div>
+    <span class="tag-pill">#mindset · #docs</span>
+    <h1>Stop Translating Docs in Your Head</h1>
+    <div class="post-meta">
+      <div class="avatar">DE</div>
+      <div>
+        <div class="name">datsenglish coach</div>
+        <div class="sub">JUL 11, 2026 · 4 MIN READ</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<article class="post-body">
+  <div class="prose-wrap">
+    <p>You open the React docs. You read a sentence. You translate it into Portuguese in your head. Then you read it again in Portuguese to actually understand it.</p>
+    <p>That's two reads for the price of one — and it's costing you more than time.</p>
+
+    <div class="signature">
+      <div class="signature-head">
+        <span>reading-mode.compare</span>
+        <span>live diagram</span>
+      </div>
+      <div class="signature-body">
+        <div class="sig-col">
+          <div class="sig-label bad">✕ translation loop</div>
+          <div class="loop-path">
+            <span class="step">read EN sentence</span>
+            <span class="step arrow-back">↻ mentally convert to PT</span>
+            <span class="step">re-read in PT to understand</span>
+            <span class="step arrow-back">↻ repeat next sentence</span>
+          </div>
+          <div class="sig-time">Cost: <b>~2x</b> processing per sentence</div>
+        </div>
+        <div class="sig-col">
+          <div class="sig-label good">✓ direct read</div>
+          <div class="direct-path">
+            <span class="step">read EN sentence</span>
+            <span class="step arrow-fwd">→ understand directly</span>
+            <span class="step">move to next sentence</span>
+            <span class="step arrow-fwd">→ no detour, no re-read</span>
+          </div>
+          <div class="sig-time">Cost: <b>1x</b> — same as a native reader</div>
+        </div>
+      </div>
+    </div>
+
+    <h2>The real problem isn't your English</h2>
+    <p>Most tech students think they have an English problem. They don't. They have a <strong>translation habit</strong> problem.</p>
+    <p>Translating word-for-word forces your brain to process the sentence twice: once to decode the English, once to reconstruct meaning in Portuguese. Native English speakers don't do this. Fluent non-native readers don't do this either. They read the English and understand it directly — no detour through their first language.</p>
+
+    <h2>Why this matters for your career</h2>
+    <p>Documentation, Stack Overflow answers, GitHub issues, job interviews — almost everything useful in tech lives in English first. If every piece of technical content costs you double the mental effort, you're not just slower. You're avoiding harder material, because your brain unconsciously routes around the extra cognitive load.</p>
+    <p>That avoidance is the real damage. Not the vocabulary gap — the habit of skipping things that require translation.</p>
+
+    <h2>How to break the habit</h2>
+    <ol>
+      <li><strong>Read short technical snippets without translating.</strong> Start small — a function's docstring, a single Stack Overflow answer, one paragraph of a changelog. Resist the urge to convert it in your head.</li>
+      <li><strong>Time yourself, not your accuracy.</strong> The goal on the first pass is speed of direct understanding, not perfect comprehension. Meaning fills in on the second look — without translating.</li>
+      <li><strong>Say it back in English, not Portuguese.</strong> Explain what you just read out loud, in English, even badly. This forces your brain to store the idea in English, not as a translated copy.</li>
+    </ol>
+    <p>Do this daily with real material — your own course docs, your own tutorials — and the loop breaks faster than you'd expect. Most students notice the shift in two to three weeks.</p>
+  </div>
+
+  <div class="author-card">
+    <div class="avatar">DE</div>
+    <div>
+      <h4>datsenglish coach</h4>
+      <p>Technical English specialist for Portuguese-speaking developers. I've coached 200+ tech students through docs, interviews, and the mindset shift that gets them unstuck.</p>
+      <a href="#" class="btn-outline">Let's work together</a>
+    </div>
+  </div>
+</article>
+      <h1>{post.data.title}</h1>
+      <Content />
+
+<section class="related">
+  <div class="wrap">
+    <h3>Keep reading</h3>
+    <div class="related-grid">
+      <a href="#" class="related-card">
+        <div class="block"></div>
+        <div class="body">
+          <span>#mindset</span>
+          <h5>You don't have an English problem. You have a hiding problem.</h5>
+        </div>
+      </a>
+      <a href="#" class="related-card">
+        <div class="block" style="background:#0A0F2C;"></div>
+        <div class="body">
+          <span>#docs</span>
+          <h5>How to skim a README like a senior dev</h5>
+        </div>
+      </a>
+      <a href="#" class="related-card">
+        <div class="block" style="background:#3D5CDB;"></div>
+        <div class="body">
+          <span>#interview</span>
+          <h5>Whiteboard English: the 12 phrases you actually need</h5>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="wrap">
+    <h2>Ready to stop translating <br>and start <span class="lime">building?</span></h2>
+    <p>20-minute discovery call. We'll find exactly where the language wall is hitting you.</p>
+    <a href="#" class="btn btn-lime">Book your free call</a>
+  </div>
+</section>
+
   	<Footer/>
 </Layout>
