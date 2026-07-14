@@ -3,7 +3,9 @@ import { getCollection } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 import Nav from '../../components/Nav.astro';
 import Footer from '../../components/Footer.astro';
+import '../../styles/global.css';
 import '../../styles/blogIndex.css';
+// import '../../styles/single-post.css';
 
 const posts = (await getCollection('blog', ({ data }) => !data.draft))
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
@@ -115,7 +117,7 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft))
 <section class="cta-band">
   <div class="wrap">
     <h2>Ready to stop translating <br>and start <span class="lime">building?</span></h2>
-    <p>20-minute discovery call. We'll find exactly where the language wall is hitting you.</p>
+    <p>20-minute discovery call. We'll find exactly where the language wanpmll is hitting you.</p>
     <a href="#" class="btn btn-lime">Book your free call</a>
   </div>
 </section>

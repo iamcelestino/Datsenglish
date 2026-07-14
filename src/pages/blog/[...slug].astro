@@ -3,6 +3,7 @@ import {getCollection, render} from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 import Nav from '../../components/Nav.astro';
 import Footer from '../../components/Footer.astro';
+import '../../styles/global.css';
 import '../../styles/blogIndex.css';
 import '../../styles/single-post.css';
 
@@ -21,7 +22,7 @@ const { Content } = await render(post);
 
 <Layout>
 	<Nav />
-      <section class="post-header">
+  <section class="post-header">
   <div class="prose-wrap">
     <div class="breadcrumb"><a href="blog-index.html">← Back to blog</a> &nbsp;·&nbsp; MINDSET</div>
     <span class="tag-pill">#mindset · #docs</span>
