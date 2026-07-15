@@ -9,132 +9,97 @@ import '../../styles/single-post.css';
 
 const posts = (await getCollection('blog', ({ data }) => !data.draft))
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+const [featured, ...rest] = posts;
+
+const allTags = [...new Set(posts.flatMap((post) => post.data.tags))];
+
+function formatDate(date: Date) {
+  return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }).toUpperCase();
+}
 ---
 
 <Layout>
   <Nav/>
   <section class="hero">
-  <div class="wrap hero-inner">
-    <span class="pill">From the datsenglish coach</span>
-    <h1>Read the docs.<br>Not the <span class="accent">translation.</span></h1>
-    <p>Weekly breakdowns on tech English, docs, interviews, and the mindset that gets Portuguese-speaking devs unstuck. Real material. No fluff.</p>
+    <div class="wrap hero-inner">
+      <span class="pill">From the datsenglish coach</span>
+      <h1>Read the docs.<br>Not the <span class="accent">translation.</span></h1>
+      <p>Weekly breakdowns on tech English, docs, interviews, and the mindset that gets Portuguese-speaking devs unstuck. Real material. No fluff.</p>
 
-    <div class="filters">
-      <button class="chip is-active">#all</button>
-      <button class="chip">#mindset</button>
-      <button class="chip">#docs</button>
-      <button class="chip">#interview</button>
-      <button class="chip">#tools</button>
-      <button class="chip">#career</button>
-    </div>
-  </div>
-</section>
-
-<section class="featured">
-  <div class="wrap">
-    <a href="blog-post.html" class="featured-card">
-      <div class="featured-visual">
-        <span class="tag">FEATURED · MINDSET</span>
-        <span class="glyph">Aa→Bb</span>
+      <div class="filters">
+        <button class="chip is-active" data-tag="all">#all</button>
+        {allTags.map((tag) => (
+          <button class="chip" data-tag={tag}>#{tag}</button>
+        ))}
       </div>
-      <div class="featured-text">
-        <span class="meta">JUL 11, 2026 · 4 MIN READ</span>
-        <h2>Stop Translating Docs in Your Head</h2>
-        <p>Why literal translation is slowing down your dev career — and the three-step drill that breaks the habit for good.</p>
-        <span class="read-link">Read the article <span class="arrow">→</span></span>
+    </div>
+  </section>
+
+  {featured && (
+    <section class="featured">
+      <div class="wrap">
+        <a href={`/blog/${featured.id}/`} class="featured-card">
+          <div class="featured-visual">
+            <span class="tag">FEATURED · {featured.data.tags[0].toUpperCase()}</span>
+            <span class="glyph">Aa→Bb</span>
+          </div>
+          <div class="featured-text">
+            <span class="meta">{formatDate(featured.data.pubDate)} · 4 MIN READ</span>
+            <h2>{featured.data.title}</h2>
+            <p>{featured.data.description}</p>
+            <span class="read-link">Read the article <span class="arrow">→</span></span>
+          </div>
+        </a>
       </div>
-    </a>
-  </div>
-</section>
+    </section>
+  )}
 
-<section class="grid-section">
-  <div class="wrap">
-    <div class="grid-heading">
-      <h3>More from the blog</h3>
-      <span>6 posts</span>
+  <section class="grid-section">
+    <div class="wrap">
+      <div class="grid-heading">
+        <h3>More from the blog</h3>
+        <span>{rest.length} posts</span>
+      </div>
+
+      <div class="post-grid">
+        {rest.map((post, i) => (
+          <a href={`/blog/${post.id}/`} class={`post-card c${(i % 6) + 1}`} data-tags={post.data.tags.join(',')}>
+            <div class="block"><span class="tag-ribbon">#{post.data.tags[0]}</span></div>
+            <div class="body">
+              <h4>{post.data.title}</h4>
+              <p>{post.data.description}</p>
+              <div class="foot"><span>{formatDate(post.data.pubDate)}</span><span>4 MIN</span></div>
+            </div>
+          </a>
+        ))}
+      </div>
     </div>
+  </section>
 
-    <div class="post-grid">
-
-      <a href="#" class="post-card c1">
-        <div class="block"><span class="tag-ribbon">#interview</span></div>
-        <div class="body">
-          <h4>Whiteboard English: the 12 phrases you actually need</h4>
-          <p>Sound confident under pressure without memorizing a script.</p>
-          <div class="foot"><span>JUL 04, 2026</span><span>5 MIN</span></div>
-        </div>
-      </a>
-
-      <a href="#" class="post-card c2">
-        <div class="block"><span class="tag-ribbon">#tools</span></div>
-        <div class="body">
-          <h4>Your terminal is a language lab (and you didn't know it)</h4>
-          <p>Turning error messages into daily English reps.</p>
-          <div class="foot"><span>JUN 27, 2026</span><span>3 MIN</span></div>
-        </div>
-      </a>
-
-      <a href="#" class="post-card c3">
-        <div class="block"><span class="tag-ribbon">#docs</span></div>
-        <div class="body">
-          <h4>How to skim a README like a senior dev</h4>
-          <p>The 90-second pass that tells you if it's worth reading fully.</p>
-          <div class="foot"><span>JUN 20, 2026</span><span>4 MIN</span></div>
-        </div>
-      </a>
-
-      <a href="#" class="post-card c4">
-        <div class="block"><span class="tag-ribbon">#career</span></div>
-        <div class="body">
-          <h4>The remote job listing words nobody explains</h4>
-          <p>Decoding "cross-functional," "ownership," and other job-post fog.</p>
-          <div class="foot"><span>JUN 13, 2026</span><span>6 MIN</span></div>
-        </div>
-      </a>
-
-      <a href="#" class="post-card c5">
-        <div class="block"><span class="tag-ribbon">#mindset</span></div>
-        <div class="body">
-          <h4>You don't have an English problem. You have a hiding problem.</h4>
-          <p>Why avoidance, not vocabulary, is the real wall.</p>
-          <div class="foot"><span>JUN 06, 2026</span><span>4 MIN</span></div>
-        </div>
-      </a>
-
-      <a href="#" class="post-card c6">
-        <div class="block"><span class="tag-ribbon">#docs</span></div>
-        <div class="body">
-          <h4>Stack Overflow answers, ranked by how honest they are</h4>
-          <p>A field guide to reading between the accepted answer.</p>
-          <div class="foot"><span>MAY 30, 2026</span><span>5 MIN</span></div>
-        </div>
-      </a>
-
+  <section class="cta-band">
+    <div class="wrap">
+      <h2>Ready to stop translating <br>and start <span class="lime">building?</span></h2>
+      <p>20-minute discovery call. We'll find exactly where the language wall is hitting you.</p>
+      <a href="#" class="btn btn-lime">Book your free call</a>
     </div>
-  </div>
-</section>
+  </section>
 
-<section class="cta-band">
-  <div class="wrap">
-    <h2>Ready to stop translating <br>and start <span class="lime">building?</span></h2>
-    <p>20-minute discovery call. We'll find exactly where the language wanpmll is hitting you.</p>
-    <a href="#" class="btn btn-lime">Book your free call</a>
-  </div>
-</section>
+  <Footer/>
+</Layout>
 
-<!-- <script>
-  document.querySelectorAll('.chip').forEach(chip=>{
-    chip.addEventListener('click',()=>{
-      document.querySelectorAll('.chip').forEach(c=>c.classList.remove('is-active'));
+<script>
+  document.querySelectorAll('.chip').forEach(chip => {
+    chip.addEventListener('click', () => {
+      document.querySelectorAll('.chip').forEach(c => c.classList.remove('is-active'));
       chip.classList.add('is-active');
+
+      const selected = chip.getAttribute('data-tag');
+      document.querySelectorAll('.post-card').forEach((card) => {
+        const cardTags = card.getAttribute('data-tags')?.split(',') ?? [];
+        const show = selected === 'all' || cardTags.includes(selected!);
+        (card as HTMLElement).style.display = show ? '' : 'none';
+      });
     });
   });
 </script>
-<!-- <!-- <!-- <!--  --> {posts.map(post => (
-      <a href={`/blog/${post.id}/`}>
-        <h2>{post.data.title}</h2>
-        <p>{post.data.description}</p>
-      </a>
-    ))} 
-  <Footer/>
-</Layout>
