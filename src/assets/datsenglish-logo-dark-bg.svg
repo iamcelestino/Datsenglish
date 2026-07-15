@@ -1,0 +1,11 @@
+<svg viewBox="0 0 300 64" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="datsenglish logo, dark background version">
+  <!-- icon: lime border replaces navy fill so it reads on dark bg -->
+  <rect x="0" y="0" width="64" height="64" rx="16" fill="none" stroke="#C8FF03" stroke-width="3"/>
+  <path d="M18 20 L32 32 L18 44" fill="none" stroke="#C8FF03" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="36" y="39" width="15" height="6" rx="2" fill="#6E8CFF"/>
+
+  <!-- wordmark -->
+  <text x="80" y="43" font-family="'Space Grotesk', sans-serif" font-weight="800" font-size="34" letter-spacing="-0.5">
+    <tspan fill="#6E8CFF">dats</tspan><tspan fill="#C8FF03">english</tspan>
+  </text>
+</svg>

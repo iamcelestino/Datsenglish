@@ -51,50 +51,6 @@ img {
   padding: 0 28px;
 }
 
-.nav {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 22px 0;
-}
-
-.logo {
-  font-family: 'Space Grotesk', sans-serif;
-  font-weight: 800;
-  font-size: 22px;
-}
-
-.logo span {
-  color: var(--blue);
-}
-
-.logo em {
-  color: var(--lime);
-  font-style: normal;
-  -webkit-text-stroke: .5px var(--ink);
-}
-
-.nav-links {
-  display: flex;
-  gap: 34px;
-  font-size: 15px;
-  font-weight: 600;
-  color: var(--ink);
-}
-
-.nav-links a {
-  opacity: .7;
-  transition: opacity .15s ease;
-}
-
-.nav-links a:hover {
-  opacity: 1;
-}
-
-.nav-links a.active {
-  opacity: 1;
-  color: var(--blue);
-}
 
 .btn {
   display: inline-flex;
@@ -132,7 +88,7 @@ img {
 }
 
 .hero-inner {
-  padding: 64px 0 48px;
+  /*padding: 64px 0 48px;*/
   text-align: center;
 }
 

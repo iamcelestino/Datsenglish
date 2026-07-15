@@ -43,4 +43,5 @@ const steps = defineCollection({
 	}),
 })
 
+
 export const collections  = { services, steps, blog };
