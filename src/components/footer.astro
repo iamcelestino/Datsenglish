@@ -1,11 +1,12 @@
 --- 
-
+import { Image } from 'astro:assets';
+import Logo from '../assets/datsenglish-logo-primary.png';
 ---
 
 <footer class="footer">
   <div class="container footer-inner">
     <div class="footer-brand">
-      <div class="nav-logo">dats<span>english</span></div>
+      <div class="nav-logo"><Image src={Logo} alt="A description of my image." width={} height={40} /></div>
       <p>Helping tech students speak, read, and write English with real confidence. One session at a time.</p>
       <div class="social-links">
         <a href="#" class="social-btn">Instagram</a>
@@ -14,7 +15,7 @@
       </div>
     </div>
     <div class="footer-links-col">
-      <strong>Quick links</strong>
+      <strong>Quick links</strong>=
       <a href="#about">About</a>
       <a href="#services">Services</a>
       <a href="#reacts">Coach Reacts</a>

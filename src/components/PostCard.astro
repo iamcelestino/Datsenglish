@@ -1,0 +1,30 @@
+---
+interface Props {
+  post: {
+    id: string;
+    data: {
+      title: string;
+      description: string;
+      pubDate: Date;
+      tags: string[];
+    };
+    minutesRead: string;
+  };
+  index: number;
+}
+
+const { post, index } = Astro.props;
+
+function formatDate(date: Date) {
+  return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }).toUpperCase();
+}
+---
+
+<a href={`/blog/${post.id}/`} class={`post-card c${(index % 6) + 1}`} data-tags={post.data.tags.join(',')}>
+  <div class="block"><span class="tag-ribbon">#{post.data.tags[0]}</span></div>
+  <div class="body">
+    <h4>{post.data.title}</h4>
+    <p>{post.data.description}</p>
+    <div class="foot"><span>{formatDate(post.data.pubDate)}</span><span>{post.minutesRead}</span></div>
+  </div>
+</a>

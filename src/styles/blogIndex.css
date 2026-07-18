@@ -35,10 +35,10 @@ a {
   text-decoration: none;
 }
 
-img {
+/*img {
   max-width: 100%;
   display: block;
-}
+}*/
 
 :focus-visible {
   outline: 3px solid var(--blue-dark);

@@ -47,7 +47,17 @@ em { font-style: normal; color: var(--lime-dark); }
 strong { font-weight: 600; }
 p { color: var(--mid); line-height: 1.75; }
 
-img { max-width: 100%; display: block; }
+
+/*:where([data-astro-image]) {
+  object-fit: var(--fit);
+  object-position: var(--pos);
+}
+:where([data-astro-image='full-width']) {
+  width: 100%;
+}
+:where([data-astro-image='constrained']) {
+  max-width: 100%;
+}*/
 
 .container {
   max-width: 1100px;

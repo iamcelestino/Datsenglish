@@ -1,0 +1,103 @@
+---
+import type { GetStaticPaths } from 'astro';
+import { getCollection, render } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+import PostCard from '../../components/PostCard.astro';
+import Pagination from '../../components/Pagination.astro';
+import '../../styles/global.css';
+import '../../styles/blogIndex.css';
+import '../../styles/single-post.css';
+
+export const getStaticPaths = (async ({ paginate }) => {
+  const sortedPosts = (await getCollection('blog', ({ data }) => !data.draft))
+    .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+  const posts = await Promise.all(
+    sortedPosts.map(async (post) => {
+      const { remarkPluginFrontmatter } = await render(post);
+      return {
+        ...post,
+        minutesRead: remarkPluginFrontmatter.minutesRead,
+      };
+    })
+  );
+
+  const [featured, ...rest] = posts;
+  const allTags = [...new Set(posts.flatMap((post) => post.data.tags))];
+
+  return paginate(rest, {
+    pageSize: 6,
+    props: { featured, allTags },
+  });
+}) satisfies GetStaticPaths;
+
+const { page, featured, allTags } = Astro.props;
+
+function formatDate(date: Date) {
+  return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }).toUpperCase();
+}
+---
+
+<Layout>
+  <Nav/>
+  <section class="hero">
+    <div class="wrap hero-inner">
+      <span class="pill">From the datsenglish coach</span>
+      <h1>Read the docs.<br>Not the <span class="accent">translation.</span></h1>
+      <p>Weekly breakdowns on tech English, docs, interviews, and the mindset that gets Portuguese-speaking devs unstuck. Real material. No fluff.</p>
+
+      <div class="filters">
+        <a href="/blog/1" class="chip is-active">#all</a>
+        {allTags.map((tag) => (
+          <a href={`/tags/${tag}/1`} class="chip">#{tag}</a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  {page.currentPage === 1 && featured && (
+    <section class="featured">
+      <div class="wrap">
+        <a href={`/blog/${featured.id}/`} class="featured-card">
+          <div class="featured-visual">
+            <span class="tag">FEATURED · {featured.data.tags[0].toUpperCase()}</span>
+            <span class="glyph">Aa→Bb</span>
+          </div>
+          <div class="featured-text">
+            <span class="meta">{formatDate(featured.data.pubDate)} · {featured.minutesRead}</span>
+            <h2>{featured.data.title}</h2>
+            <p>{featured.data.description}</p>
+            <span class="read-link">Read the article <span class="arrow">→</span></span>
+          </div>
+        </a>
+      </div>
+    </section>
+  )}
+
+  <section class="grid-section">
+    <div class="wrap">
+      <div class="grid-heading">
+        <h3>More from the blog</h3>
+        <span>Page {page.currentPage} of {page.lastPage}</span>
+      </div>
+
+      <div class="post-grid">
+        {page.data.map((post, i) => <PostCard post={post} index={i} />)}
+      </div>
+
+      <Pagination page={page} />
+    </div>
+  </section>
+
+  <section class="cta-band">
+    <div class="wrap">
+      <h2>Ready to stop translating <br>and start <span class="lime">building?</span></h2>
+      <p>20-minute discovery call. We'll find exactly where the language wall is hitting you.</p>
+      <a href="#" class="btn btn-lime">Book your free call</a>
+    </div>
+  </section>
+
+  <Footer/>
+</Layout>
