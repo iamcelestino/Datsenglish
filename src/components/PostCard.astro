@@ -15,12 +15,19 @@ interface Props {
 
 const { post, index } = Astro.props;
 
+// post.id looks like "en/english-problem-hiding-problem" or "pt/english-problem-hiding-problem"
+const [lang, ...slugParts] = post.id.split('/');
+const slug = slugParts.join('/');
+
+// pt is the default locale with no prefix, en needs /en/ prefixed
+const href = lang === 'pt' ? `/blog/${slug}/` : `/${lang}/blog/${slug}/`;
+
 function formatDate(date: Date) {
   return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }).toUpperCase();
 }
 ---
 
-<a href={`/blog/${post.id}/`} class={`post-card c${(index % 6) + 1}`} data-tags={post.data.tags.join(',')}>
+<a href={href} class={`post-card c${(index % 6) + 1}`} data-tags={post.data.tags.join(',')}>
   <div class="block"><span class="tag-ribbon">#{post.data.tags[0]}</span></div>
   <div class="body">
     <h4>{post.data.title}</h4>

@@ -1,0 +1,36 @@
+---
+import { getCollection, render } from 'astro:content';
+import Layout from '../../../layouts/Layout.astro';
+import Nav from '../../../components/Nav.astro';
+import Footer from '../../../components/Footer.astro';
+import '../../../styles/global.css';
+import '../../../styles/single-post.css';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog', ({ id, data }) =>
+    id.startsWith('pt/') && !data.draft
+  );
+
+  return posts.map((post) => {
+    const slug = post.id.replace(/^pt\//, '');
+    return { params: { slug }, props: post };
+  });
+}
+
+const post = Astro.props;
+const { Content } = await render(post);
+
+function formatDate(date: Date) {
+  return date.toLocaleDateString('pt-PT', { month: 'short', day: 'numeric', year: 'numeric' }).toUpperCase();
+}
+---
+
+<Layout>
+  <Nav />
+  <article class="single-post">
+    <h1>{post.data.title}</h1>
+    <p class="meta">{formatDate(post.data.pubDate)}</p>
+    <Content />
+  </article>
+  <Footer />
+</Layout>

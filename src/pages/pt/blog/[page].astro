@@ -1,19 +1,21 @@
 ---
 import type { GetStaticPaths } from 'astro';
 import { getCollection, render } from 'astro:content';
-import Layout from '../../layouts/Layout.astro';
-import Nav from '../../components/Nav.astro';
-import Footer from '../../components/Footer.astro';
-import PostCard from '../../components/PostCard.astro';
-import Pagination from '../../components/Pagination.astro';
-import '../../styles/global.css';
-import '../../styles/blogIndex.css';
-import '../../styles/single-post.css';
+import Layout from '../../../layouts/Layout.astro';
+import Nav from '../../../components/Nav.astro';
+import Footer from '../../../components/Footer.astro';
+import PostCard from '../../../components/PostCard.astro';
+import Pagination from '../../../components/Pagination.astro';
+import '../../../styles/global.css';
+import '../../../styles/blogIndex.css';
+import '../../../styles/single-post.css';
 
 export const getStaticPaths = (async ({ paginate }) => {
-  const sortedPosts = (await getCollection('blog', ({ data }) => !data.draft))
+  const sortedPosts = (await getCollection('/blog', ({ id, data }) =>
+    id.startsWith('pt/') && !data.draft
+  ))
     .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
-
+    
   const posts = await Promise.all(
     sortedPosts.map(async (post) => {
       const { remarkPluginFrontmatter } = await render(post);
@@ -36,7 +38,7 @@ export const getStaticPaths = (async ({ paginate }) => {
 const { page, featured, allTags } = Astro.props;
 
 function formatDate(date: Date) {
-  return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }).toUpperCase();
+  return date.toLocaleDateString('pt-PT', { month: 'short', day: 'numeric', year: 'numeric' }).toUpperCase();
 }
 ---
 
@@ -44,12 +46,12 @@ function formatDate(date: Date) {
   <Nav/>
   <section class="hero">
     <div class="wrap hero-inner">
-      <span class="pill">From the datsenglish coach</span>
-      <h1>Read the docs.<br>Not the <span class="accent">translation.</span></h1>
-      <p>Weekly breakdowns on tech English, docs, interviews, and the mindset that gets Portuguese-speaking devs unstuck. Real material. No fluff.</p>
+      <span class="pill">Do coach da datsenglish</span>
+      <h1>Leia a documentação.<br>Não a <span class="accent">tradução.</span></h1>
+      <p>Análises semanais sobre inglês técnico, documentação, entrevistas e a mentalidade que destrava devs lusófonos. Material real. Sem enrolação.</p>
 
       <div class="filters">
-        <a href="/blog/1" class="chip is-active">#all</a>
+        <a href="/blog/1" class="chip is-active">#tudo</a>
         {allTags.map((tag) => (
           <a href={`/tags/${tag}/1`} class="chip">#{tag}</a>
         ))}
@@ -60,16 +62,16 @@ function formatDate(date: Date) {
   {page.currentPage === 1 && featured && (
     <section class="featured">
       <div class="wrap">
-        <a href={`/blog/${featured.id}/`} class="featured-card">
+        <a href={`/blog/${featured.id.replace(/^pt\//, '')}/`} class="featured-card">
           <div class="featured-visual">
-            <span class="tag">FEATURED · {featured.data.tags[0].toUpperCase()}</span>
+            <span class="tag">DESTAQUE · {featured.data.tags[0].toUpperCase()}</span>
             <span class="glyph">Aa→Bb</span>
           </div>
           <div class="featured-text">
             <span class="meta">{formatDate(featured.data.pubDate)} · {featured.minutesRead}</span>
             <h2>{featured.data.title}</h2>
             <p>{featured.data.description}</p>
-            <span class="read-link">Read the article <span class="arrow">→</span></span>
+            <span class="read-link">Ler o artigo <span class="arrow">→</span></span>
           </div>
         </a>
       </div>
@@ -79,8 +81,8 @@ function formatDate(date: Date) {
   <section class="grid-section">
     <div class="wrap">
       <div class="grid-heading">
-        <h3>More from the blog</h3>
-        <span>Page {page.currentPage} of {page.lastPage}</span>
+        <h3>Mais do blog</h3>
+        <span>Página {page.currentPage} de {page.lastPage}</span>
       </div>
 
       <div class="post-grid">
@@ -93,9 +95,9 @@ function formatDate(date: Date) {
 
   <section class="cta-band">
     <div class="wrap">
-      <h2>Ready to stop translating <br>and start <span class="lime">building?</span></h2>
-      <p>20-minute discovery call. We'll find exactly where the language wall is hitting you.</p>
-      <a href="#" class="btn btn-lime">Book your free call</a>
+      <h2>Pronto para parar de traduzir <br>e começar a <span class="lime">construir?</span></h2>
+      <p>Chamada de descoberta de 20 minutos. Vamos encontrar exatamente onde a barreira do idioma está te travando.</p>
+      <a href="#" class="btn btn-lime">Agende sua chamada gratuita</a>
     </div>
   </section>
 
