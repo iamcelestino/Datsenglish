@@ -187,6 +187,7 @@ p { color: var(--mid); line-height: 1.75; }
   font-size: 22px;
   color: var(--dark);
   letter-spacing: -0.5px;
+  height: auto;
 }
 .nav-logo span { color: var(--orange); }
 

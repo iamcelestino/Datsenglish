@@ -11,7 +11,7 @@ import '../../../styles/blogIndex.css';
 import '../../../styles/single-post.css';
 
 export const getStaticPaths = (async ({ paginate }) => {
-  const sortedPosts = (await getCollection('/blog', ({ id, data }) =>
+  const sortedPosts = (await getCollection('blog', ({ id, data }) =>
     id.startsWith('pt/') && !data.draft
   ))
     .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
@@ -100,6 +100,5 @@ function formatDate(date: Date) {
       <a href="#" class="btn btn-lime">Agende sua chamada gratuita</a>
     </div>
   </section>
-
   <Footer/>
 </Layout>
